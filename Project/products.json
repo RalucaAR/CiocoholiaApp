@@ -1,0 +1,31 @@
+[
+    {
+        "name": "Chocolate Cake",
+        "category": "Cake",
+        "description": "This cocoa-based cake is deeply chocolatey and incredibly moist. It surprises me every single time with how good it is for something so easy. It is a great emergency chocolate cake to have in your repertoire for forgotten birthdays, last-minute visitors, or urgent Friday night chocolate cravings.",
+        "price": "16 lei",
+        "image": "pieceofcakes2"
+    },
+    {
+        "name": "Fruit Mousse",
+        "category": "PieceOfCakes",
+        "description": "Fruit Mousse details",
+         "price": "16 lei",
+         "image": "pieceofcakes2"
+    },
+    {
+        "name": "Dream Cupcake",
+        "category": "Cupcakes",
+        "description": "Dream Cupcake details",
+        "price": "16 lei",
+        "image": "pieceofcakes2"
+    },
+    {
+        "name": "Macarons",
+        "category": "Macarons",
+        "description": "Macarons details",
+        "price": "16 lei",
+        "image": "pieceofcakes2"
+    }
+]
+
