@@ -57,7 +57,7 @@ class CategoriesTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as! ProductTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "productCell", for: indexPath) as! ProductTableViewCell
 
 
         let product = products[indexPath.row]
@@ -96,7 +96,7 @@ class CategoriesTableViewController: UITableViewController {
                     let nextScene = segue.destination as! ProductViewController
                     let cell = sender as! UITableViewCell
                     let index = self.tableView.indexPath(for: cell)
-                    nextScene.title = self.products[index?.row ?? 0] as? String
+                    nextScene.title = self.products[index?.row ?? 0] as! String
                     nextScene.product = self.products[index?.row ?? 0]
         }
     }
