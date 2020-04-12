@@ -61,4 +61,21 @@ extension MapViewController : MKMapViewDelegate{
     func mapViewWillStartRenderingMap(_ mapView: MKMapView) {
         print("Map randering...")
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+           let annotation = annotation as? MKPointAnnotation
+        annotation?.subtitle = "Strada Academiei, nr. 10"
+          let identifier = "marker"
+          var view: MKMarkerAnnotationView
+          if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
+                dequeuedView.annotation = annotation
+                view = dequeuedView
+          } else {
+                view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view.canShowCallout = true
+                view.calloutOffset = CGPoint(x: -5, y: 5)
+                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+          }
+          return view
+    }
 }

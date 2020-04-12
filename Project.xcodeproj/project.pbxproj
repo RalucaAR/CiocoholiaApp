@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B01E9FBE2443891E005EE857 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01E9FBD2443891E005EE857 /* MainTabBarViewController.swift */; };
+		B01E9FC22443BAAE005EE857 /* ProfileNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01E9FC12443BAAE005EE857 /* ProfileNavigationController.swift */; };
+		B05E292A2441BE3F00327947 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E29292441BE3F00327947 /* DesignableView.swift */; };
+		B05E292C2441C67100327947 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05E292B2441C67100327947 /* LoginViewController.swift */; };
 		B06106EE24388E87009A52D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06106ED24388E87009A52D1 /* AppDelegate.swift */; };
 		B06106F024388E88009A52D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06106EF24388E88009A52D1 /* SceneDelegate.swift */; };
 		B06106F224388E88009A52D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06106F124388E88009A52D1 /* ViewController.swift */; };
@@ -23,6 +27,9 @@
 		B0A23A34243D3840002D1309 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A23A33243D3840002D1309 /* ProductViewController.swift */; };
 		B0B0A2B62439380B00B39BAD /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B0A2B52439380B00B39BAD /* ProductModel.swift */; };
 		B0B0A2BA2439445B00B39BAD /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B0A2B92439445B00B39BAD /* ProductTableViewCell.swift */; };
+		B0B674B52442307D00ADEE05 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B674B42442307D00ADEE05 /* RegisterViewController.swift */; };
+		B0D3E3D22444CF7A00E9F412 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D3E3D12444CF7A00E9F412 /* UserDefaultsHelper.swift */; };
+		B0F420AE2443354100E39729 /* UserPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F420AD2443354100E39729 /* UserPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B01E9FBD2443891E005EE857 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		B01E9FC12443BAAE005EE857 /* ProfileNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigationController.swift; sourceTree = "<group>"; };
+		B05E29292441BE3F00327947 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
+		B05E292B2441C67100327947 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B06106EA24388E87009A52D1 /* Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B06106ED24388E87009A52D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B06106EF24388E88009A52D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +76,9 @@
 		B0A23A33243D3840002D1309 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		B0B0A2B52439380B00B39BAD /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		B0B0A2B92439445B00B39BAD /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		B0B674B42442307D00ADEE05 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		B0D3E3D12444CF7A00E9F412 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		B0F420AD2443354100E39729 /* UserPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,11 +138,18 @@
 				B08329D2243E6C2800BAC9BB /* MapViewController.swift */,
 				B0B0A2B92439445B00B39BAD /* ProductTableViewCell.swift */,
 				B06107222438F47C009A52D1 /* CategoriesTableViewController.swift */,
+				B0B674B42442307D00ADEE05 /* RegisterViewController.swift */,
+				B05E292B2441C67100327947 /* LoginViewController.swift */,
+				B0F420AD2443354100E39729 /* UserPageViewController.swift */,
 				B06106F324388E88009A52D1 /* Main.storyboard */,
 				B061072424390C21009A52D1 /* products.json */,
 				B06106F924388E89009A52D1 /* Assets.xcassets */,
 				B06106FB24388E89009A52D1 /* LaunchScreen.storyboard */,
 				B06106FE24388E89009A52D1 /* Info.plist */,
+				B01E9FC12443BAAE005EE857 /* ProfileNavigationController.swift */,
+				B01E9FBD2443891E005EE857 /* MainTabBarViewController.swift */,
+				B05E29292441BE3F00327947 /* DesignableView.swift */,
+				B0D3E3D12444CF7A00E9F412 /* UserDefaultsHelper.swift */,
 				B06106F624388E88009A52D1 /* Project.xcdatamodeld */,
 			);
 			path = Project;
@@ -284,14 +305,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01E9FBE2443891E005EE857 /* MainTabBarViewController.swift in Sources */,
+				B05E292C2441C67100327947 /* LoginViewController.swift in Sources */,
 				B061072124389909009A52D1 /* CollectionViewCell.swift in Sources */,
+				B01E9FC22443BAAE005EE857 /* ProfileNavigationController.swift in Sources */,
 				B06106F224388E88009A52D1 /* ViewController.swift in Sources */,
 				B06106EE24388E87009A52D1 /* AppDelegate.swift in Sources */,
+				B05E292A2441BE3F00327947 /* DesignableView.swift in Sources */,
 				B08329D3243E6C2800BAC9BB /* MapViewController.swift in Sources */,
+				B0F420AE2443354100E39729 /* UserPageViewController.swift in Sources */,
 				B06107232438F47C009A52D1 /* CategoriesTableViewController.swift in Sources */,
 				B06106F024388E88009A52D1 /* SceneDelegate.swift in Sources */,
 				B0B0A2BA2439445B00B39BAD /* ProductTableViewCell.swift in Sources */,
+				B0D3E3D22444CF7A00E9F412 /* UserDefaultsHelper.swift in Sources */,
 				B0A23A34243D3840002D1309 /* ProductViewController.swift in Sources */,
+				B0B674B52442307D00ADEE05 /* RegisterViewController.swift in Sources */,
 				B06106F824388E88009A52D1 /* Project.xcdatamodeld in Sources */,
 				B0B0A2B62439380B00B39BAD /* ProductModel.swift in Sources */,
 			);

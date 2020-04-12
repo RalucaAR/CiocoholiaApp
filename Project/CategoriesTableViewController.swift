@@ -96,7 +96,7 @@ class CategoriesTableViewController: UITableViewController {
                     let nextScene = segue.destination as! ProductViewController
                     let cell = sender as! UITableViewCell
                     let index = self.tableView.indexPath(for: cell)
-                    nextScene.title = self.products[index?.row ?? 0] as! String
+                nextScene.title = String(describing: self.products[index?.row ?? 0])
                     nextScene.product = self.products[index?.row ?? 0]
         }
     }
