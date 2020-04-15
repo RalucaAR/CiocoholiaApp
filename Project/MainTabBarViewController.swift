@@ -13,19 +13,17 @@ class MainTabBarViewController: UITabBarController {
     var password: String?
     override func viewDidLoad() {
         super.viewDidLoad()
-        //isLoggedInUser()
-        
-        // Do any additional setup after loading the view.
+       
         
         guard let viewControllers = viewControllers else{ return }
         for viewController in viewControllers {
             if let profileNavController = viewController as? ProfileNavigationController{
                 if let userPage = profileNavController.viewControllers.first as? UserPageViewController {
                     userPage.usernameString = username
-                    userPage.passwordString = password
                     
                 }
             }
+           
         }
     }
 

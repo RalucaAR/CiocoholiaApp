@@ -68,8 +68,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderColor = UIColor.orange.cgColor
         cell?.layer.borderWidth = 2
-        
-        //performSegue(withIdentifier: "toCategoryTableViewSegue", sender: cell)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)

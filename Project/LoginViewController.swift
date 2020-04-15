@@ -50,6 +50,7 @@ class LoginViewController: UIViewController {
                         
                         // set UserDefaults
                         UserDefaults.standard.setIsLoggedIn(value: true)
+                        UserDefaults.standard.setLoggedInUserEmail(value: email!)
                         
                     }
                 }

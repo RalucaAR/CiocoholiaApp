@@ -90,6 +90,7 @@ class RegisterViewController: UIViewController {
                     mainTabBar.password = passwordTextField.text
                     present(mainTabBar, animated: true, completion: nil)
                     UserDefaults.standard.setIsLoggedIn(value: true)
+                    UserDefaults.standard.setLoggedInUserEmail(value: email.text!)
                 
                     
             } catch let error as NSError{
