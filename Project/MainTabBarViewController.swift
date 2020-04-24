@@ -35,12 +35,15 @@ class MainTabBarViewController: UITabBarController {
     func isLoggedInUser() {
            let userState = UserDefaults.standard.getIsLoggedIn()
            
+        if UserDefaults.standard.getLoggedInUserEmail() == "admin@mail.com" {
+            let adminPage  = self.storyboard?.instantiateViewController(withIdentifier: "AdminCakesViewController") as! AdminCakesViewController
+            present(adminPage, animated: true, completion: nil)
+        }
+        
            if userState == false {
                // if the user is not logged in, show the login page
                 let loginPage  = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
                 present(loginPage, animated: true, completion: nil)
-
-           
            }
        }
     
