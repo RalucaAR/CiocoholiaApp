@@ -67,19 +67,19 @@ class UserPageViewController: UIViewController , UICollectionViewDelegate, UICol
     }
     
     func selectCurrentUser(success: @escaping (Bool) -> Void) {
-        let currentUser = Auth.auth().currentUser?.uid
-               let ref  = Firestore.firestore().collection(CollectionPaths.users).whereField("uid", isEqualTo: currentUser!)
-                   ref.getDocuments() {
-                       (snapshot, err) in
-                       if err != nil {
-                           print("Error getting document data!")
-                       }
-                       else{
-                           let document = snapshot!.documents.first
-                            self.favoritesList = document?["favoritesList"] as! [String]
-                            self.username.text = document?["name"] as? String
-                            success(true)
-                       }
+        guard let currentUser = Auth.auth().currentUser?.uid else { return}
+        let ref  = Firestore.firestore().collection(CollectionPaths.users).whereField("uid", isEqualTo: currentUser)
+       ref.getDocuments() {
+           (snapshot, err) in
+           if err != nil {
+               print("Error getting document data!")
+           }
+           else{
+               let document = snapshot!.documents.first
+                self.favoritesList = document?["favoritesList"] as! [String]
+                self.username.text = document?["name"] as? String
+                success(true)
+           }
     }
     }
     

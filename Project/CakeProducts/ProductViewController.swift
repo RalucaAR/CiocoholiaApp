@@ -22,8 +22,10 @@ class ProductViewController: UIViewController {
     @IBAction func deleteButtonTapped(_ sender: Any) {
         let ref = Firestore.firestore().collection(CollectionPaths.users).document(self.currentUser!)
         ref.updateData(["favoritesList": FieldValue.arrayRemove([self.navigationItem.title ?? ""])])
+        deleteButton.isEnabled = false
         deleteButton.isHidden = true
         favoritesButton.isEnabled = true
+        favoritesButton.setTitle("Add to Favorites❤️", for: [])
     }
     @IBOutlet weak var favoritesButton: UIButton!
     @IBOutlet weak var productFirstImage: UIImageView!
@@ -32,6 +34,7 @@ class ProductViewController: UIViewController {
         (sender as! UIButton).setTitle("Added to Favorites🥰", for: [])
         (sender as! UIButton).isEnabled = false
         deleteButton.isHidden = false
+        deleteButton.isEnabled = true;
     }
     
     @IBOutlet weak var productImageView: UIView!
@@ -75,7 +78,8 @@ class ProductViewController: UIViewController {
                         if fav == self.navigationItem.title {
                             self.favoritesButton.setTitle("Added to Favorites🥰", for: [])
                             self.favoritesButton.isEnabled = false
-                            self.deleteButton.isHidden = false;
+                            self.deleteButton.isEnabled = true
+                            self.deleteButton.isHidden = false
                         }
                     }
                     success(true)

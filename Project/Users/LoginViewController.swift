@@ -45,11 +45,13 @@ class LoginViewController: UIViewController {
                                 let document = querySnapshot!.documents.first
                                 let isAdmin = document?["isAdmin"] as! Bool
                                 if isAdmin == true{
-                                   let adminPage  = self.storyboard?.instantiateViewController(withIdentifier: "AdminCakesViewController") as! AdminCakesViewController
+                                   let adminPage  = self.storyboard?.instantiateViewController(withIdentifier: "AdminTabBarViewController") as! AdminTabBarViewController
+                                    adminPage.modalPresentationStyle = .fullScreen
                                     self.present(adminPage, animated: true, completion: nil)
                                 }
                                 else{
                                     let mainTabBar  = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
+                                    mainTabBar.modalPresentationStyle = .fullScreen
                                     self.present(mainTabBar, animated: true, completion: nil)
                                 }
                                 

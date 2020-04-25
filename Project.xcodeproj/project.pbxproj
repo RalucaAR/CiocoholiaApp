@@ -12,6 +12,7 @@
 		A3A5F39F828E07B281136836 /* Pods_Project_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1869A14D4DA9AD35F762E49 /* Pods_Project_ProjectUITests.framework */; };
 		B00BF0FF2451E77F00DFB47E /* AdminCakesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00BF0FE2451E77F00DFB47E /* AdminCakesViewController.swift */; };
 		B00BF1012452306900DFB47E /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00BF1002452306900DFB47E /* LocationModel.swift */; };
+		B016F4512454F1B500B7C1BE /* AddNewLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B016F4502454F1B500B7C1BE /* AddNewLocationViewController.swift */; };
 		B01E9FBE2443891E005EE857 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01E9FBD2443891E005EE857 /* MainTabBarViewController.swift */; };
 		B01E9FC22443BAAE005EE857 /* ProfileNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01E9FC12443BAAE005EE857 /* ProfileNavigationController.swift */; };
 		B022B0A92447B07A00C257D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B022B0A82447B07A00C257D9 /* GoogleService-Info.plist */; };
@@ -37,9 +38,13 @@
 		B093AC792446130C0048CC38 /* ProductsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B093AC782446130C0048CC38 /* ProductsNavigationController.swift */; };
 		B09DA1B324519F85007F0E30 /* CollectionPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09DA1B224519F85007F0E30 /* CollectionPaths.swift */; };
 		B0A23A34243D3840002D1309 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A23A33243D3840002D1309 /* ProductViewController.swift */; };
+		B0A2643024543673009320E2 /* AdminTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A2642F24543673009320E2 /* AdminTabBarViewController.swift */; };
+		B0A2643224544D17009320E2 /* AdminLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A2643124544D17009320E2 /* AdminLocationViewController.swift */; };
+		B0A2643424547D34009320E2 /* AddLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A2643324547D34009320E2 /* AddLocationTableViewCell.swift */; };
 		B0B0A2B62439380B00B39BAD /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B0A2B52439380B00B39BAD /* ProductModel.swift */; };
 		B0B0A2BA2439445B00B39BAD /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B0A2B92439445B00B39BAD /* ProductTableViewCell.swift */; };
 		B0B674B52442307D00ADEE05 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B674B42442307D00ADEE05 /* RegisterViewController.swift */; };
+		B0BF03872454BB42000D465E /* EditLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BF03862454BB42000D465E /* EditLocationViewController.swift */; };
 		B0D3E3D22444CF7A00E9F412 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D3E3D12444CF7A00E9F412 /* UserDefaultsHelper.swift */; };
 		B0F420AE2443354100E39729 /* UserPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F420AD2443354100E39729 /* UserPageViewController.swift */; };
 		B0F43F442453009B00DD990F /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F43F432453009B00DD990F /* CategoryModel.swift */; };
@@ -72,6 +77,7 @@
 		A8B68ED1E8A9498A3009F0B3 /* Pods_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00BF0FE2451E77F00DFB47E /* AdminCakesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminCakesViewController.swift; sourceTree = "<group>"; };
 		B00BF1002452306900DFB47E /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		B016F4502454F1B500B7C1BE /* AddNewLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewLocationViewController.swift; sourceTree = "<group>"; };
 		B01E9FBD2443891E005EE857 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		B01E9FC12443BAAE005EE857 /* ProfileNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigationController.swift; sourceTree = "<group>"; };
 		B022B0A82447B07A00C257D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -104,9 +110,13 @@
 		B09DA1B224519F85007F0E30 /* CollectionPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPaths.swift; sourceTree = "<group>"; };
 		B09FE58A2451C4FF0006220F /* Project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project.entitlements; sourceTree = "<group>"; };
 		B0A23A33243D3840002D1309 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		B0A2642F24543673009320E2 /* AdminTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabBarViewController.swift; sourceTree = "<group>"; };
+		B0A2643124544D17009320E2 /* AdminLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminLocationViewController.swift; sourceTree = "<group>"; };
+		B0A2643324547D34009320E2 /* AddLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationTableViewCell.swift; sourceTree = "<group>"; };
 		B0B0A2B52439380B00B39BAD /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		B0B0A2B92439445B00B39BAD /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		B0B674B42442307D00ADEE05 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		B0BF03862454BB42000D465E /* EditLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLocationViewController.swift; sourceTree = "<group>"; };
 		B0D3E3D12444CF7A00E9F412 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		B0F420AD2443354100E39729 /* UserPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageViewController.swift; sourceTree = "<group>"; };
 		B0F43F432453009B00DD990F /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
@@ -159,6 +169,11 @@
 			isa = PBXGroup;
 			children = (
 				B00BF0FE2451E77F00DFB47E /* AdminCakesViewController.swift */,
+				B0A2643324547D34009320E2 /* AddLocationTableViewCell.swift */,
+				B0BF03862454BB42000D465E /* EditLocationViewController.swift */,
+				B016F4502454F1B500B7C1BE /* AddNewLocationViewController.swift */,
+				B0A2642F24543673009320E2 /* AdminTabBarViewController.swift */,
+				B0A2643124544D17009320E2 /* AdminLocationViewController.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -526,9 +541,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0BF03872454BB42000D465E /* EditLocationViewController.swift in Sources */,
 				B00BF0FF2451E77F00DFB47E /* AdminCakesViewController.swift in Sources */,
 				B01E9FBE2443891E005EE857 /* MainTabBarViewController.swift in Sources */,
 				B05E292C2441C67100327947 /* LoginViewController.swift in Sources */,
+				B016F4512454F1B500B7C1BE /* AddNewLocationViewController.swift in Sources */,
 				B093AC75244604380048CC38 /* FavoritesList+CoreDataProperties.swift in Sources */,
 				B061072124389909009A52D1 /* CollectionViewCell.swift in Sources */,
 				B093AC77244604380048CC38 /* Users+CoreDataProperties.swift in Sources */,
@@ -536,6 +553,7 @@
 				B06106F224388E88009A52D1 /* ViewController.swift in Sources */,
 				B06106EE24388E87009A52D1 /* AppDelegate.swift in Sources */,
 				B05E292A2441BE3F00327947 /* DesignableView.swift in Sources */,
+				B0A2643424547D34009320E2 /* AddLocationTableViewCell.swift in Sources */,
 				B08329D3243E6C2800BAC9BB /* MapViewController.swift in Sources */,
 				B0F420AE2443354100E39729 /* UserPageViewController.swift in Sources */,
 				B06107232438F47C009A52D1 /* CategoriesTableViewController.swift in Sources */,
@@ -549,6 +567,8 @@
 				B0B674B52442307D00ADEE05 /* RegisterViewController.swift in Sources */,
 				B06106F824388E88009A52D1 /* Project.xcdatamodeld in Sources */,
 				B0B0A2B62439380B00B39BAD /* ProductModel.swift in Sources */,
+				B0A2643224544D17009320E2 /* AdminLocationViewController.swift in Sources */,
+				B0A2643024543673009320E2 /* AdminTabBarViewController.swift in Sources */,
 				B093AC792446130C0048CC38 /* ProductsNavigationController.swift in Sources */,
 				B093AC76244604380048CC38 /* Users+CoreDataClass.swift in Sources */,
 				B093AC74244604380048CC38 /* FavoritesList+CoreDataClass.swift in Sources */,

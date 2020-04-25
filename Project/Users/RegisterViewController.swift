@@ -95,6 +95,7 @@ class RegisterViewController: UIViewController {
                         let mainTabBar  = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarViewController") as! MainTabBarViewController
                         mainTabBar.username = self.nameTextField.text
                         mainTabBar.password = self.passwordTextField.text
+                        mainTabBar.modalPresentationStyle = .fullScreen
                         self.present(mainTabBar, animated: true, completion: nil)
                         UserDefaults.standard.setIsLoggedIn(value: true)
                         UserDefaults.standard.setLoggedInUserEmail(value: self.email.text!)
@@ -107,3 +108,4 @@ class RegisterViewController: UIViewController {
             
     }
 }
+

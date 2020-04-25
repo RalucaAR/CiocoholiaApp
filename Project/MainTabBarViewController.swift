@@ -16,7 +16,7 @@ class MainTabBarViewController: UITabBarController {
        
         
         guard let viewControllers = viewControllers else{ return }
-        for viewController in viewControllers {
+        /*for viewController in viewControllers {
             if let profileNavController = viewController as? ProfileNavigationController{
                 if let userPage = profileNavController.viewControllers.first as? UserPageViewController {
                     userPage.usernameString = username
@@ -24,7 +24,7 @@ class MainTabBarViewController: UITabBarController {
                 }
             }
            
-        }
+        } */
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -33,17 +33,20 @@ class MainTabBarViewController: UITabBarController {
     
     
     func isLoggedInUser() {
-           let userState = UserDefaults.standard.getIsLoggedIn()
+        let userState = UserDefaults.standard.getIsLoggedIn()
+        if userState {
            
         if UserDefaults.standard.getLoggedInUserEmail() == "admin@mail.com" {
-            let adminPage  = self.storyboard?.instantiateViewController(withIdentifier: "AdminCakesViewController") as! AdminCakesViewController
+            let adminPage  = self.storyboard?.instantiateViewController(withIdentifier: "AdminTabBarViewController") as! AdminTabBarViewController
+            adminPage.modalPresentationStyle = .fullScreen
             present(adminPage, animated: true, completion: nil)
         }
-        
-           if userState == false {
+        }
+        else if userState == false {
                // if the user is not logged in, show the login page
                 let loginPage  = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-                present(loginPage, animated: true, completion: nil)
+            loginPage.modalPresentationStyle = .fullScreen
+            present(loginPage, animated: true, completion: nil)
            }
        }
     

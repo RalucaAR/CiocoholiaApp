@@ -21,29 +21,7 @@ class CategoriesTableViewController: UITableViewController {
         getCategoryProducts()
         self.tableView.backgroundColor = UIColor.black
     }
-    
-    /*func getProducts(productCategory :String) {
-        _ = URLSession(configuration: .default)
-        
-        let urlComponents = URLComponents(string: "https://api.jsonbin.io/b/5e8ceb25753e041b892b588d/2")
-        
-        let url = urlComponents?.url
-        let dataTask = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            let decoder = JSONDecoder()
-            self.products = try! decoder.decode([ProductModel].self, from: data!)
-                var categoryProducts: [ProductModel] = []
-                for item in self.products {
-                    if  item.category == productCategory {
-                    categoryProducts.append(item)
-                }
-                }
-                self.products = categoryProducts
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
-            dataTask.resume()
-        } */
+
         
     func getProducts(success: @escaping (Bool) -> Void){
         let ref = Firestore.firestore().collection(CollectionPaths.cakes)
@@ -114,20 +92,6 @@ class CategoriesTableViewController: UITableViewController {
        override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 100.0
         }
-        
-      /*  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            
-            let detailsViewController = storyboard?.instantiateViewController(identifier: "GlalleryDetailsViewController") as! GlalleryDetailsViewController
-            //        detailsViewController.modalPresentationStyle = .fullScreen
-                    present(detailsViewController, animated: true, completion: nil)
-            
-        } */
-    
-
-
-
-    
-    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -136,7 +100,7 @@ class CategoriesTableViewController: UITableViewController {
                     let nextScene = segue.destination as! ProductViewController
                     let cell = sender as! UITableViewCell
                     let index = self.tableView.indexPath(for: cell)
-                nextScene.title = String(describing: self.categoryProducts[index?.row ?? 0])
+                    nextScene.title = String(describing: self.categoryProducts[index?.row ?? 0])
                     nextScene.product = self.categoryProducts[index?.row ?? 0]
         }
     }
