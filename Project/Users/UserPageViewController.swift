@@ -13,10 +13,11 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class UserPageViewController: UIViewController , UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    var loggedUser: Users?
+ 
     var usernameString: String?
     var favoritesList: [String] = []
     var favoriteProducts: [ProductModel] = []
+    var indicator: ProgressIndicator?
     
     @IBOutlet weak var userFavoriteMessage: UILabel!
     @IBOutlet weak var favoritesCollectionView: UICollectionView!
@@ -55,6 +56,8 @@ class UserPageViewController: UIViewController , UICollectionViewDelegate, UICol
         let layout = self.favoritesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
         layout.minimumInteritemSpacing = 5
+        indicator = ProgressIndicator(inview:self.view,loadingViewColor: UIColor.gray, indicatorColor: UIColor.black, msg: "Loading user page...")
+        self.view.addSubview(indicator!)
     }
     
      override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +70,7 @@ class UserPageViewController: UIViewController , UICollectionViewDelegate, UICol
     }
     
     func selectCurrentUser(success: @escaping (Bool) -> Void) {
+        indicator!.start()
         guard let currentUser = Auth.auth().currentUser?.uid else { return}
         let ref  = Firestore.firestore().collection(CollectionPaths.users).whereField("uid", isEqualTo: currentUser)
        ref.getDocuments() {
@@ -110,6 +114,7 @@ class UserPageViewController: UIViewController , UICollectionViewDelegate, UICol
                             }
                         }
                     }
+                    self.indicator!.stop()
                     self.favoriteProducts = currentList
                     listSuccess(true)
                 }
@@ -130,8 +135,10 @@ class UserPageViewController: UIViewController , UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
-        
-        cell.userPageCakeImage!.image = UIImage(named: favoriteProducts[indexPath.item].image!)
+        ImageLoader.image(for:  NSURL(string: favoriteProducts[indexPath.item].image!)! as URL) { (image) in
+            cell.userPageCakeImage.image = image
+            
+        }
         cell.userPageCakeName!.text = favoriteProducts[indexPath.item].name
         cell.layer.borderColor = UIColor.gray.cgColor
         cell.layer.borderWidth = 0.5

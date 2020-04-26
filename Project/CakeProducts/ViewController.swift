@@ -17,16 +17,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var productCategories: [String] = []
     var productImages: [String] = []
-   // let categories = ["Cakes", "Cupcakes", "Piece of Cakes", "Macarons"]
-    let categoriesImages: [UIImage] = [
-        UIImage(named: "cakes2")!,
-        UIImage(named: "cupcakes2")!,
-        UIImage(named: "pieceofcakes3")!,
-        UIImage(named: "macarons2")!,
+    var indicator: ProgressIndicator?
         
-    ]
     override func viewDidLoad() {
         super.viewDidLoad()
+        indicator = ProgressIndicator(inview:self.view,loadingViewColor: UIColor.gray, indicatorColor: UIColor.black, msg: "Loading product categories...")
+               self.view.addSubview(indicator!)
         initialiseLists()
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -34,7 +30,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
         layout.minimumInteritemSpacing = 5
-        // Do any additional setup after loading the view.
+       
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,12 +38,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func getProductsFromDB(success: @escaping (Bool) -> Void) {
+        indicator!.start()
         let ref = Firestore.firestore().collection(CollectionPaths.categories)
         ref.getDocuments() { (querySnapshot, err) in
             if err != nil {
                 print("Error getting documents!")
             } else {
                 for document in querySnapshot!.documents {
+                    self.indicator!.stop()
                     let category = CategoryModel()
                     category.image = document["image"] as? String
                     category.name   = document["name"] as? String
@@ -79,7 +77,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         cell.categoryLabel.text = productCategories[indexPath.item]
         cell.categoryLabel.textColor = UIColor.orange
-        cell.categoryImage.image = UIImage(named: productImages[indexPath.item])
+        
+        ImageLoader.image(for:  NSURL(string: productImages[indexPath.item])! as URL) { (image) in
+            cell.categoryImage.image = image
+        }
         cell.layer.borderColor = UIColor.gray.cgColor
         cell.layer.borderWidth = 0.5
         

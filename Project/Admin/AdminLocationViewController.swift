@@ -13,6 +13,7 @@ import FirebaseFirestore
 class AdminLocationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var locations: [LocationModel] = []
     var LocationToDeleteUID: String = ""
+    var indicator:ProgressIndicator?
 
     @IBAction func AddNewLocationButton(_ sender: Any) {
         let addNewPage  = self.storyboard?.instantiateViewController(withIdentifier: "AddNewLocationViewController") as! AddNewLocationViewController
@@ -25,6 +26,8 @@ class AdminLocationViewController: UIViewController, UITableViewDelegate, UITabl
         
         self.locationsTableView.delegate = self
         self.locationsTableView.dataSource = self
+        indicator = ProgressIndicator(inview:self.view,loadingViewColor: UIColor.gray, indicatorColor: UIColor.black, msg: "Loading locations...")
+        self.view.addSubview(indicator!)
 
     }
     
@@ -49,7 +52,6 @@ class AdminLocationViewController: UIViewController, UITableViewDelegate, UITabl
 
 
         let location = locations[indexPath.row]
-        //cell.imageView?.image = UIImage(named: location.image ?? "")
         cell.locationNameLabel.text = location.locationTitle
         cell.locationSubtitleLabel.text = location.locationSubtitle
         cell.layer.cornerRadius = 10
@@ -70,10 +72,16 @@ class AdminLocationViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            deleteLocation(locationToDelete: self.locations[indexPath.row].locationTitle!)
-            let deletedData = self.locations[indexPath.row].locationSubtitle!
-            print ("Deleted: " + deletedData)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            self.deleteLocation(locationToDelete: self.locations[indexPath.row].locationTitle!) { (true) in
+                tableView.beginUpdates()
+                let deletedData = self.locations[indexPath.row].locationSubtitle!
+                print ("Deleted: " + deletedData)
+                self.locations.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.endUpdates()
+                self.locationsTableView.reloadData()
+            }
+            
         }
     }
     
@@ -96,15 +104,17 @@ class AdminLocationViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    func deleteLocation(locationToDelete: String) {
+    func deleteLocation(locationToDelete: String, deletionSuccess: @escaping(Bool) -> Void) {
         getLocationToDelete(locationTitle: locationToDelete) { (true) in
             let ref = Firestore.firestore().collection(CollectionPaths.locations)
             ref.document(self.LocationToDeleteUID).delete();
+            deletionSuccess(true)
         }
         
     }
     
     func getLocations(success: @escaping (Bool) -> Void){
+        indicator!.start()
         let ref = Firestore.firestore().collection(CollectionPaths.locations)
         ref.getDocuments() { (snapshot, error) in
             if error != nil {
@@ -113,6 +123,7 @@ class AdminLocationViewController: UIViewController, UITableViewDelegate, UITabl
             else {
                 var foundLocations: [LocationModel] = []
                 for document in snapshot!.documents {
+                    self.indicator!.stop()
                     let location = LocationModel()
                     let coords = document["coords"] as? GeoPoint
                     location.latitude = coords?.latitude

@@ -14,16 +14,19 @@ class CategoriesTableViewController: UITableViewController {
     
     var allProducts: [ProductModel] = []
     var categoryProducts: [ProductModel] = []
-
+    var indicator: ProgressIndicator?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        indicator = ProgressIndicator(inview:self.view,loadingViewColor: UIColor.gray, indicatorColor: UIColor.black, msg: "Loading products...")
+        self.view.addSubview(indicator!)
         getCategoryProducts()
         self.tableView.backgroundColor = UIColor.black
+        
     }
 
         
     func getProducts(success: @escaping (Bool) -> Void){
+        indicator!.start()
         let ref = Firestore.firestore().collection(CollectionPaths.cakes)
         ref.getDocuments() {
             (querySnapshot, err) in
@@ -31,6 +34,7 @@ class CategoriesTableViewController: UITableViewController {
                 print("Error getting documents!")
             } else {
                 for document in querySnapshot!.documents {
+                    self.indicator!.stop()
                         let product = ProductModel()
                         product.image = document["image"] as? String
                         product.category = document["category"] as? String
@@ -79,7 +83,9 @@ class CategoriesTableViewController: UITableViewController {
 
 
         let product = categoryProducts[indexPath.row]
-        cell.productImage.image = UIImage(named: product.image ?? "")
+        ImageLoader.image(for:  NSURL(string: product.image!)! as URL) { (image) in
+            cell.productImage.image = image
+        }
         cell.productName.text = product.name
         cell.productPrice.text = product.price
         cell.layer.cornerRadius = 10

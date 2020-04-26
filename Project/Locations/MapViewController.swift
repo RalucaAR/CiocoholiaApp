@@ -39,6 +39,7 @@ class MapViewController: UIViewController {
             if err != nil {
                 print("Error getting documents!")
             } else {
+                var currentLocations: [LocationModel] = []
                 for document in querySnapshot!.documents {
                     let location = LocationModel()
                     let coords = document.get("coords")
@@ -49,9 +50,10 @@ class MapViewController: UIViewController {
                     location.longitude = lon
                     location.locationTitle = document["locationTitle"] as? String
                     location.locationSubtitle = document["locationSubtitle"] as? String
-                    self.locations.append(location)
+                    currentLocations.append(location)
                     
                 }
+                self.locations = currentLocations
                 success(true)
             }
         }
@@ -78,7 +80,7 @@ class MapViewController: UIViewController {
         
         
         // mark the cake shop location with an annotation
-        let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 44.43551249066226, longitude: 26.099658608436588)
+        let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: location.latitude ?? 44.43551249066226, longitude: location.longitude ?? 26.099658608436588)
         let objectAnnotation = MKPointAnnotation()
         objectAnnotation.coordinate = pinLocation
         objectAnnotation.title = location.locationTitle

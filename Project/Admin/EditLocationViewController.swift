@@ -20,7 +20,7 @@ class EditLocationViewController: UIViewController {
     @IBOutlet weak var longitudeTextField: UITextField!
     @IBOutlet weak var latitudeTextField: UITextField!
     
-    @IBAction func editLoacationTapped(_ sender: Any) {
+    @IBAction func editLocationButtonTapped(_ sender: Any) {
         currentDataAsArray()
         getCurrentLocationUID{ (success) in
             if success {
@@ -35,7 +35,6 @@ class EditLocationViewController: UIViewController {
                 }
             }
         }
-        
     }
     
     override func viewDidLoad() {

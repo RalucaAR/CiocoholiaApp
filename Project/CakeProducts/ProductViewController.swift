@@ -50,8 +50,10 @@ class ProductViewController: UIViewController {
             }}
         deleteButton.isHidden = true
         if product != nil {
+            ImageLoader.image(for:  NSURL(string: product.image!)! as URL) { (image) in
+            self.productFirstImage.image = image
+            }
             self.productDescription.text = product.description
-            self.productFirstImage.image = UIImage(named: product.image ?? "")
             self.productPrice.text = product.price
             self.navigationItem.title = product.name
             self.productFirstImage.applyshadowWithCorner(containerView: self.productImageView, cornerRadious: 10)
