@@ -46,7 +46,6 @@ class CategoriesTableViewController: UITableViewController {
                 }
                 success(true)
             }
-        
         }
     
     
@@ -60,15 +59,13 @@ class CategoriesTableViewController: UITableViewController {
             }
             self.tableView.reloadData()
             }
-            
         }
     }
 
         
-        override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            //return productViewModel.levelsList.count
-            return categoryProducts.count
-        }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categoryProducts.count
+    }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()

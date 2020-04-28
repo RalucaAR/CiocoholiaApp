@@ -7,28 +7,75 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import Firebase
+import FirebaseAuth
 
 class MainTabBarViewController: UITabBarController {
     var username: String?
     var password: String?
+     var adminExists: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         
-        guard let viewControllers = viewControllers else{ return }
-        /*for viewController in viewControllers {
-            if let profileNavController = viewController as? ProfileNavigationController{
-                if let userPage = profileNavController.viewControllers.first as? UserPageViewController {
-                    userPage.usernameString = username
-                    
+        adminExists { (success) in
+            if success {
+                    self.view.reloadInputViews()
+                    }
+                }
+    }
+    
+    func adminExists(success: @escaping (Bool) -> Void) {
+       
+        let databaseRef = Firestore.firestore().collection(CollectionPaths.users)
+        databaseRef.getDocuments { (snapshot, error) in
+            if error != nil {
+                print("Error at admin account creating!")
+            } else{
+                for document in snapshot!.documents {
+                    let currentEmail = document["name"] as? String
+                    if currentEmail == "name" {
+                        self.adminExists = true
+                    }
+                }
+                success(true)
+            }
+        }
+    }
+    
+    func checkOrCreateAdminAccount (success: @escaping (Bool) -> Void) {
+        
+        if adminExists == false {
+            Auth.auth().createUser(withEmail: "admin@mail.com", password: "p@rola") { (result, error) in
+                if  error != nil {
+                    print (error ?? "Erorr creating user")
+                }
+                else{
+                    let db = Firestore.firestore()
+                    db.collection(CollectionPaths.users).addDocument(data: ["name" : "admin",
+                                                                            "isAdmin": true,
+                                                                            "uid": result!.user.uid,
+                                                                            "favoritesList": [],
+                                                                            "shoppingCartItems": []
+                                                                            ])
+                    { (error) in
+                        if error != nil {
+                            print(error ?? "Could not create user!")
+                        }
+                        else {
+                            print("Created admin account!")
+                        }
+                    }
+                    success(true)
                 }
             }
-           
-        } */
+        }
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
         isLoggedInUser()
+        
     }
     
     

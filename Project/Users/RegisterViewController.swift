@@ -84,7 +84,8 @@ class RegisterViewController: UIViewController {
                 db.collection(CollectionPaths.users).addDocument(data: ["name" : self.nameTextField.text!,
                                                                         "isAdmin": false,
                                                                         "uid": result!.user.uid,
-                                                                        "favoritesList": []
+                                                                        "favoritesList": [],
+                                                                        "shoppingCartItems": []
                                                                         ])
                 { (error) in
                     if error != nil {

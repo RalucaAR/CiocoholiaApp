@@ -14,5 +14,7 @@ struct CollectionPaths {
     static let locations = "locations"
     static let  cakes = "cakes"
     static let categories = "categories"
+    static let shoppingCartItems = "shoppingCartItems"
+    static let orders = "orders"
   
 }

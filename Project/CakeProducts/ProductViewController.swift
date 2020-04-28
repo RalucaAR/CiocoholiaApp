@@ -16,9 +16,9 @@ class ProductViewController: UIViewController {
     var currentUser: String!
     var favoritesList: [String] = []
     var product : ProductModel!
+    var indicator: ProgressIndicator!
     
     @IBOutlet weak var deleteButton: UIButton!
-    
     @IBAction func deleteButtonTapped(_ sender: Any) {
         let ref = Firestore.firestore().collection(CollectionPaths.users).document(self.currentUser!)
         ref.updateData(["favoritesList": FieldValue.arrayRemove([self.navigationItem.title ?? ""])])
@@ -37,13 +37,22 @@ class ProductViewController: UIViewController {
         deleteButton.isEnabled = true;
     }
     
+    
+    @IBOutlet weak var addToCartButton: UIButton!
+    @IBAction func addToCart(_ sender: Any) {
+        insertToShoppingCartItem()
+        (sender as! UIButton).setTitle("Added to Cart🥰", for: [])
+        (sender as! UIButton).isEnabled = false
+    }
+    
     @IBOutlet weak var productImageView: UIView!
     @IBOutlet weak var productDescription: UILabel!
     @IBOutlet weak var productPrice: UILabel!
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        indicator = ProgressIndicator(inview:self.view,loadingViewColor: UIColor.gray, indicatorColor: UIColor.black, msg: "Loading product details...")
+        self.view.addSubview(indicator!)
         selectCurentUserUID{ (insertSuccess) in
             if insertSuccess {
                 self.view.reloadInputViews()
@@ -59,10 +68,21 @@ class ProductViewController: UIViewController {
             self.productFirstImage.applyshadowWithCorner(containerView: self.productImageView, cornerRadious: 10)
         }
         selectCurrentUserFavoritesList{ (success) in
+            self.indicator!.start()
             if success{
                 self.view.reloadInputViews()
             }
         }
+        
+       
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        getProductShoppingCartStatus { (success) in
+                   if success {
+                       self.view.reloadInputViews()
+                       self.indicator!.stop()
+                   }
+               }
     }
     
     func selectCurrentUserFavoritesList(success: @escaping (Bool) -> Void) {
@@ -86,7 +106,7 @@ class ProductViewController: UIViewController {
                     }
                     success(true)
                }
-    }
+        }
     }
     
     func selectCurentUserUID(insertSuccess: @escaping (Bool) -> Void) {
@@ -113,6 +133,44 @@ class ProductViewController: UIViewController {
                 ref.updateData(["favoritesList": FieldValue.arrayUnion([self.navigationItem.title ?? ""])])
             }
         }
+    }
+    
+    func insertToShoppingCartItem() {
+        selectCurentUserUID{ (insertSuccess) in
+            if insertSuccess {
+                let ref = Firestore.firestore().collection(CollectionPaths.users).document(self.currentUser!).collection(CollectionPaths.shoppingCartItems)
+                ref.document(self.product.name!).setData([
+                    "quantity": 1
+                ]) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                    }
+                }
+            }
+        }
+    }
+    
+    func getProductShoppingCartStatus(success: @escaping (Bool) -> Void) {
+        selectCurentUserUID{ (insertSuccess) in
+        let ref = Firestore.firestore().collection(CollectionPaths.users).document(self.currentUser!).collection(CollectionPaths.shoppingCartItems)
+        ref.getDocuments { (snapshot, error) in
+            if error != nil {
+                print("Errorat shopping list info retrieving!")
+            }
+            else {
+                for document in snapshot!.documents {
+                    let currentProduct = document.documentID
+                    if currentProduct == self.product.name {
+                        self.addToCartButton.setTitle("Added to Cart🥰", for: [])
+                        self.addToCartButton.isEnabled = false
+                    }
+                }
+                success(true)
+            }
+        }
+    }
     }
 
 }

@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseFirestore
 
 class AdminCakesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -70,7 +71,7 @@ class AdminCakesViewController: UIViewController, UITableViewDelegate, UITableVi
 
         let product = products[indexPath.row]
         
-        ImageLoader.image(for:  NSURL(string: product.image!)! as URL) { (image) in
+        ImageLoader.image(for:  NSURL(string: product.image ?? "")! as URL) { (image) in
                        cell.productImage.image = image
         }
             
